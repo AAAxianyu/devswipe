@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Provider } from 'react-redux';
 import { store } from './store';
 import Layout from './components/common/Layout';
-import Feed from './pages/Feed';
+import Landing from './pages/Landing';
+import Swipe from './pages/Swipe';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProjectUploadPage from './pages/ProjectUpload';
@@ -19,13 +20,17 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
+            {/* 门户页面 */}
+            <Route path="/" element={<Landing />} />
+            
             {/* 认证路由 */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             
             {/* 主应用路由 */}
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Feed />} />
+            <Route path="/app" element={<Swipe />} />
+            <Route path="/app/feed" element={<Layout />}>
+              <Route index element={<Swipe />} />
               <Route path="upload" element={<ProjectUploadPage />} />
               <Route path="search" element={<Search />} />
               <Route path="my-projects" element={<MyProjects />} />

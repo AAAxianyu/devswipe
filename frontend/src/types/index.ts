@@ -213,7 +213,19 @@ export interface ProjectState {
   error: string | null;
 }
 
+export interface ContentState {
+  items: any[];
+  currentIndex: number;
+  isLoading: boolean;
+  error: string | null;
+  hasMore: boolean;
+  page: number;
+  sessionId: string;
+  interactions: Record<number, InteractionType>;
+}
+
 export interface RootState {
   auth: AuthState;
   projects: ProjectState;
+  content: ContentState;
 }
