@@ -1,0 +1,15 @@
+# IDE files
+.idea/
+.claude/
+
+# Frontend build files
+frontend/build/
+frontend/node_modules/
+
+# Backend environment files
+backend/config.env
+backend/.env
+
+# OS files
+.DS_Store
+Thumbs.db
