@@ -36,7 +36,7 @@ const Landing: React.FC = () => {
             >
               <Link 
                 to="/login" 
-                className="text-white/80 hover:text-white transition-colors duration-200"
+                className="bg-white/[0.1] backdrop-blur-sm border border-white/[0.2] text-white px-4 py-2 rounded-xl hover:bg-white/[0.15] transition-all duration-300 shadow-[0_8px_32px_0_rgba(59,130,246,0.2)] hover:shadow-[0_8px_32px_0_rgba(59,130,246,0.4)]"
               >
                 登录
               </Link>
