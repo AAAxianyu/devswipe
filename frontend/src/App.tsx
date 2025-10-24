@@ -8,6 +8,7 @@ import Swipe from './pages/Swipe';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProjectUploadPage from './pages/ProjectUpload';
+import Publish from './pages/Publish';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
 import MyProjects from './pages/MyProjects';
@@ -29,6 +30,7 @@ function App() {
             
             {/* 主应用路由 */}
             <Route path="/app" element={<Swipe />} />
+            <Route path="/publish" element={<Publish />} />
             <Route path="/app/feed" element={<Layout />}>
               <Route index element={<Swipe />} />
               <Route path="upload" element={<ProjectUploadPage />} />
