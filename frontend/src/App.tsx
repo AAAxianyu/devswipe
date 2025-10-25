@@ -13,6 +13,7 @@ import Search from './pages/Search';
 import Profile from './pages/Profile';
 import MyProjects from './pages/MyProjects';
 import Settings from './pages/Settings';
+import PersonalHub from './pages/PersonalHub';
 import './App.css';
 
 function App() {
@@ -23,15 +24,16 @@ function App() {
           <Routes>
             {/* 门户页面 */}
             <Route path="/" element={<Landing />} />
-            
+
             {/* 认证路由 */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            
+
             {/* 主应用路由 */}
             <Route path="/app" element={<Swipe />} />
             <Route path="/app/:postId" element={<Swipe />} />
             <Route path="/publish" element={<Publish />} />
+            <Route path="/personalHub" element={<PersonalHub />} />
             <Route path="/app/feed" element={<Layout />}>
               <Route index element={<Swipe />} />
               <Route path="upload" element={<ProjectUploadPage />} />
@@ -41,7 +43,7 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="settings" element={<Settings />} />
             </Route>
-            
+
             {/* 404 重定向 */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
