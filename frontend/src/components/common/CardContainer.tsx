@@ -34,6 +34,7 @@ interface CardContainerProps {
   onLoadMore: () => void;
   hasMore: boolean;
   isLoading: boolean;
+  onCardClick?: (item: ContentItem) => void;
 }
 
 const CardContainer: React.FC<CardContainerProps> = ({
@@ -42,7 +43,8 @@ const CardContainer: React.FC<CardContainerProps> = ({
   onSwipe,
   onLoadMore,
   hasMore,
-  isLoading
+  isLoading,
+  onCardClick
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,6 +58,12 @@ const CardContainer: React.FC<CardContainerProps> = ({
 
   const handleQuickAction = (direction: 'like' | 'dislike') => {
     handleSwipe(direction);
+  };
+
+  const handleCardClick = () => {
+    if (onCardClick && currentIndex < items.length) {
+      onCardClick(items[currentIndex]);
+    }
   };
 
   // 当接近列表末尾时自动加载更多
@@ -98,6 +106,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
                 item={item}
                 onSwipe={handleSwipe}
                 onQuickAction={handleQuickAction}
+                onCardClick={handleCardClick}
                 index={index}
                 total={items.length}
               />
@@ -124,6 +133,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
               item={items[currentIndex + 1]}
               onSwipe={() => {}}
               onQuickAction={() => {}}
+              onCardClick={() => {}}
               index={currentIndex + 1}
               total={items.length}
               isPreview

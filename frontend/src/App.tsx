@@ -30,6 +30,7 @@ function App() {
             
             {/* 主应用路由 */}
             <Route path="/app" element={<Swipe />} />
+            <Route path="/app/:postId" element={<Swipe />} />
             <Route path="/publish" element={<Publish />} />
             <Route path="/app/feed" element={<Layout />}>
               <Route index element={<Swipe />} />
