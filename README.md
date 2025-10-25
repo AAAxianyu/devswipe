@@ -1,11 +1,11 @@
 # DevSwipe - 开发者项目展示平台
 
-DevSwipe是一个类似Tinder的开发者项目展示平台，支持项目滑动浏览、交互评价、个性化推荐等功能。
+DevSwipe 是一个类似 Tinder 的开发者项目展示平台，支持项目滑动浏览、交互评价、个性化推荐等功能。
 
 ## 功能特性
 
-- 🔐 **用户认证系统** - 注册、登录、JWT认证
-- 📱 **项目浏览** - 类似Tinder的滑动交互体验
+- 🔐 **用户认证系统** - 注册、登录、JWT 认证
+- 📱 **项目浏览** - 类似 Tinder 的滑动交互体验
 - 🎯 **智能推荐** - 基于用户偏好的个性化推荐算法
 - 💬 **互动功能** - 喜欢、不喜欢、超级喜欢、跳过、评论
 - 📊 **数据分析** - 项目统计和用户行为分析
@@ -16,21 +16,24 @@ DevSwipe是一个类似Tinder的开发者项目展示平台，支持项目滑动
 ## 技术栈
 
 ### 后端
+
 - **Go 1.21+** - 主要编程语言
-- **Gin** - Web框架
-- **GORM** - ORM框架
+- **Gin** - Web 框架
+- **GORM** - ORM 框架
 - **MySQL 8.0** - 主数据库
 - **Redis 7.0** - 缓存和会话存储
 - **JWT** - 身份认证
 
 ### 前端
-- **React 18** - UI框架
+
+- **React 18** - UI 框架
 - **TypeScript** - 类型安全
 - **Tailwind CSS** - 样式框架
 - **Redux Toolkit** - 状态管理
 - **React Router** - 路由管理
 
 ### 部署
+
 - **Docker** - 容器化
 - **docker-compose** - 服务编排
 - **Nginx** - 反向代理
@@ -43,22 +46,25 @@ DevSwipe是一个类似Tinder的开发者项目展示平台，支持项目滑动
 - Go 1.21+ (本地开发)
 - Node.js 18+ (本地开发)
 
-### 使用Docker运行
+### 使用 Docker 运行
 
 1. **克隆项目**
+
 ```bash
 git clone <repository-url>
 cd devswipe
 ```
 
 2. **启动服务**
+
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 3. **访问应用**
+
 - 前端: http://localhost:3000
-- 后端API: http://localhost:8080
+- 后端 API: http://localhost:8080
 - 数据库: localhost:3306
 - Redis: localhost:6379
 
@@ -67,18 +73,21 @@ docker-compose up -d
 #### 后端开发
 
 1. **安装依赖**
+
 ```bash
 cd backend
 go mod tidy
 ```
 
 2. **配置环境变量**
+
 ```bash
 cp env.example .env
 # 编辑.env文件，配置数据库和Redis连接信息
 ```
 
 3. **启动服务**
+
 ```bash
 go run cmd/server/main.go
 ```
@@ -86,17 +95,19 @@ go run cmd/server/main.go
 #### 前端开发
 
 1. **安装依赖**
+
 ```bash
 cd frontend
 npm install
 ```
 
 2. **启动开发服务器**
+
 ```bash
 npm start
 ```
 
-## API文档
+## API 文档
 
 ### 认证接口
 
@@ -179,10 +190,10 @@ devswipe/
 
 ### 代码规范
 
-- Go代码遵循标准Go代码规范
-- React组件使用函数式组件和Hooks
-- TypeScript严格模式
-- 使用Prettier和ESLint进行代码格式化
+- Go 代码遵循标准 Go 代码规范
+- React 组件使用函数式组件和 Hooks
+- TypeScript 严格模式
+- 使用 Prettier 和 ESLint 进行代码格式化
 
 ### 测试
 
@@ -202,15 +213,15 @@ npm test
 
 ## 贡献指南
 
-1. Fork项目
+1. Fork 项目
 2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
 3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开Pull Request
+5. 打开 Pull Request
 
 ## 许可证
 
-本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
 ## 联系方式
 
@@ -220,9 +231,10 @@ npm test
 ## 更新日志
 
 ### v1.0.0 (2024-01-01)
+
 - 初始版本发布
 - 基础功能实现
 - 用户认证系统
 - 项目浏览和交互
 - 推荐算法
-- Docker部署支持
+- Docker 部署支持
