@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CardContainer from '../components/common/CardContainer';
+import PostDetailModal from '../components/common/PostDetailModal';
 import useContent from '../hooks/useContent';
 
 const Swipe: React.FC = () => {
   const navigate = useNavigate();
+  const { postId } = useParams<{ postId?: string }>();
+  const [selectedPost, setSelectedPost] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const {
     items,
     currentIndex,
@@ -15,6 +20,44 @@ const Swipe: React.FC = () => {
     isLoading,
     error
   } = useContent();
+
+  const handleCardClick = (post: any) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+    // 更新URL，添加帖子ID参数
+    navigate(`/app/${post.id}`, { replace: true });
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPost(null);
+    // 移除URL中的帖子ID参数
+    navigate('/app', { replace: true });
+  };
+
+  // 处理URL参数，自动打开对应帖子的详情
+  useEffect(() => {
+    if (postId && items.length > 0) {
+      const post = items.find(item => item.id === parseInt(postId));
+      if (post) {
+        setSelectedPost(post);
+        setIsModalOpen(true);
+        // 如果帖子不在当前显示位置，可能需要调整currentIndex
+        const postIndex = items.findIndex(item => item.id === parseInt(postId));
+        if (postIndex !== -1 && postIndex !== currentIndex) {
+          // 这里可以调整到对应帖子的位置
+          // 但这需要修改useContent hook来支持设置currentIndex
+        }
+      } else {
+        // 如果找不到对应的帖子，跳回到基础路径
+        navigate('/app', { replace: true });
+      }
+    } else if (!postId && isModalOpen) {
+      // 如果URL没有postId但modal是打开的，关闭modal
+      setIsModalOpen(false);
+      setSelectedPost(null);
+    }
+  }, [postId, items, currentIndex, isModalOpen, navigate]);
 
   return (
     <div className="h-screen bg-gradient-to-br from-black via-slate-900 to-black relative overflow-hidden">
@@ -94,6 +137,7 @@ const Swipe: React.FC = () => {
           onLoadMore={loadMore}
           hasMore={hasMore}
           isLoading={isLoading}
+          onCardClick={handleCardClick}
         />
       </div>
 
@@ -108,6 +152,13 @@ const Swipe: React.FC = () => {
           {error}
         </motion.div>
       )}
+
+      {/* Post Detail Modal */}
+      <PostDetailModal
+        post={selectedPost}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

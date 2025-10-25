@@ -30,6 +30,7 @@ interface SwipeCardProps {
   item: ContentItem;
   onSwipe: (direction: InteractionType) => void;
   onQuickAction: (direction: 'like' | 'dislike') => void;
+  onCardClick: () => void;
   index: number;
   total: number;
   isPreview?: boolean;
@@ -39,6 +40,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   item,
   onSwipe,
   onQuickAction,
+  onCardClick,
   index,
   total,
   isPreview = false
@@ -118,6 +120,11 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
   const handleDoubleClick = () => {
     if (isPreview) return;
     onSwipe('super_like');
+  };
+
+  const handleCardClick = () => {
+    if (isPreview || isDragging) return;
+    onCardClick();
   };
 
   const handleVideoLoadedMetadata = () => {
@@ -206,14 +213,15 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
           <img
             src={item.mediaUrl}
             alt={item.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer hover:brightness-95 transition-all duration-200"
             draggable={false}
+            onClick={handleCardClick}
           />
         ) : (
           <video
             ref={videoRef}
             src={item.mediaUrl}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer"
             controls={!isDragging}
             muted
             loop
@@ -222,6 +230,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
             onPlay={handleVideoPlay}
             onPause={handleVideoPause}
             onClick={(e) => {
+              e.stopPropagation();
               if (videoRef.current) {
                 if (videoRef.current.paused) {
                   videoRef.current.play();
@@ -229,6 +238,10 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
                   videoRef.current.pause();
                 }
               }
+            }}
+            onDoubleClick={(e) => {
+              e.stopPropagation();
+              handleCardClick();
             }}
           />
         )}
@@ -256,9 +269,24 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
           </span>
         </div>
 
-        {/* 进度指示器 */}
-        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium">
-          {index + 1} / {total}
+        {/* 顶部按钮组 */}
+        <div className="absolute top-4 right-4 flex flex-col space-y-2">
+          {/* 查看详情按钮 */}
+          <button
+            onClick={handleCardClick}
+            disabled={isPreview || isDragging}
+            className="bg-black/50 backdrop-blur-md text-white p-3 rounded-full hover:bg-black/70 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+            title="查看详情"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+
+          {/* 进度指示器 */}
+          <div className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium">
+            {index + 1} / {total}
+          </div>
         </div>
 
         {/* 滑动提示 */}
