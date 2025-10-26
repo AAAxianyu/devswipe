@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardContainer from '../components/common/CardContainer';
 import PostDetailModal from '../components/common/PostDetailModal';
 import useContent from '../hooks/useContent';
@@ -102,7 +102,7 @@ const Swipe: React.FC = () => {
                     backgroundSize: '200% 100%'
                   }}></div>
               </div>
-              <span className="text-white font-semibold text-xl">DevSwipe</span>
+              <Link to="/" className="text-white font-semibold text-xl">DevSwipe</Link>
             </motion.div>
 
             <motion.div
