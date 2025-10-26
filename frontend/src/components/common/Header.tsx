@@ -18,7 +18,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="text-2xl font-bold text-primary-600">
-              DevSwipe
+              CodeCrush
             </div>
           </Link>
 

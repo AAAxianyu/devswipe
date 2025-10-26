@@ -179,51 +179,8 @@ const CardContainer: React.FC<CardContainerProps> = ({
         )}
       </AnimatePresence>
 
-      {/* 快捷操作按钮 */}
-      {!isLoading && items.length > 0 && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-50"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <motion.button
-            onClick={() => handleQuickAction('dislike')}
-            className="w-14 h-14 bg-gradient-to-br from-red-500/80 to-red-600/80 backdrop-blur-sm border border-white/[0.2] text-white rounded-full flex items-center justify-center shadow-[0_8px_32px_0_rgba(239,68,68,0.4)] hover:shadow-[0_8px_32px_0_rgba(239,68,68,0.6)] transition-all duration-300"
-            whileHover={{ scale: 1.1, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </motion.button>
-
-          <motion.button
-            onClick={() => handleSwipe('super_like')}
-            className="w-14 h-14 bg-gradient-to-br from-yellow-500/80 to-yellow-600/80 backdrop-blur-sm border border-white/[0.2] text-white rounded-full flex items-center justify-center shadow-[0_8px_32px_0_rgba(234,179,8,0.4)] hover:shadow-[0_8px_32px_0_rgba(234,179,8,0.6)] transition-all duration-300"
-            whileHover={{ scale: 1.1, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </motion.button>
-
-          <motion.button
-            onClick={() => handleQuickAction('like')}
-            className="w-14 h-14 bg-gradient-to-br from-green-500/80 to-green-600/80 backdrop-blur-sm border border-white/[0.2] text-white rounded-full flex items-center justify-center shadow-[0_8px_32px_0_rgba(34,197,94,0.4)] hover:shadow-[0_8px_32px_0_rgba(34,197,94,0.6)] transition-all duration-300"
-            whileHover={{ scale: 1.1, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-            </svg>
-          </motion.button>
-        </motion.div>
-      )}
-
       {/* 进度指示器 */}
-      {items.length > 0 && (
+      {/* {items.length > 0 && (
         <motion.div
           className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/[0.2] text-white px-3 py-1 rounded-full text-sm font-medium shadow-[0_4px_16px_0_rgba(0,0,0,0.1)]"
           initial={{ opacity: 0, x: 50 }}
@@ -231,7 +188,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
         >
           {currentIndex + 1} / {items.length}
         </motion.div>
-      )}
+      )} */}
     </div>
   );
 };

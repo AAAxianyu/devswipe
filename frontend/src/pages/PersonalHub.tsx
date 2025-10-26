@@ -58,9 +58,9 @@ const PersonalHub: React.FC = () => {
               onClick={() => navigate('/app')}
             >
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/[0.1] rounded-xl flex items-center justify-center relative shadow-[0_8px_32px_0_rgba(59,130,246,0.3)]">
-                <span className="text-white font-bold text-sm relative z-10">DS</span>
+                <span className="text-white font-bold text-sm relative z-10">CC</span>
               </div>
-              <span className="text-white font-semibold text-xl">DevSwipe</span>
+              <span className="text-white font-semibold text-xl">CodeCrush</span>
             </motion.div>
 
             <motion.div

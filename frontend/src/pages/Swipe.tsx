@@ -95,14 +95,14 @@ const Swipe: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/[0.1] rounded-xl flex items-center justify-center relative shadow-[0_8px_32px_0_rgba(59,130,246,0.3)]">
-                <span className="text-white font-bold text-sm relative z-10">DS</span>
+                <span className="text-white font-bold text-sm relative z-10">CC</span>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl animate-glass-shimmer"
                   style={{
                     background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
                     backgroundSize: '200% 100%'
                   }}></div>
               </div>
-              <Link to="/" className="text-white font-semibold text-xl">DevSwipe</Link>
+              <Link to="/" className="text-white font-semibold text-xl">CodeCrush</Link>
             </motion.div>
 
             <motion.div

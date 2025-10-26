@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="text-2xl font-bold text-primary-600 mb-4">
-              DevSwipe
+              CodeCrush
             </div>
             <p className="text-gray-600 text-sm max-w-md">
               发现和分享优秀的开发者项目，通过滑动的方式探索创新的技术解决方案。
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         <div className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © 2024 DevSwipe. All rights reserved.
+              © 2024 CodeCrush. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-primary-600 transition-colors">

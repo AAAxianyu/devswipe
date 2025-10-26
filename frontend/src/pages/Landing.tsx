@@ -18,14 +18,14 @@ const Landing: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/[0.1] rounded-xl flex items-center justify-center relative shadow-[0_8px_32px_0_rgba(59,130,246,0.3)]">
-                <span className="text-white font-bold text-sm relative z-10">DS</span>
+                <span className="text-white font-bold text-sm relative z-10">CC</span>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl animate-glass-shimmer" 
                      style={{
                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
                        backgroundSize: '200% 100%'
                      }}></div>
               </div>
-              <span className="text-white font-semibold text-xl">DevSwipe</span>
+              <span className="text-white font-semibold text-xl">CodeCrush</span>
             </motion.div>
             
             <motion.div 
@@ -84,7 +84,7 @@ const Landing: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              DevSwipe
+              CodeCrush
             </span>
           </motion.h1>
           
@@ -105,7 +105,7 @@ const Landing: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] rounded-xl px-4 py-2 font-mono text-sm text-blue-300 shadow-[0_8px_32px_0_rgba(59,130,246,0.1)]">
-              <span className="text-blue-400">const</span> devSwipe = <span className="text-cyan-400">'awesome'</span>;
+              <span className="text-blue-400">const</span> codeCrush = <span className="text-cyan-400">'awesome'</span>;
             </div>
           </motion.div>
           
@@ -229,7 +229,7 @@ const Landing: React.FC = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              为什么选择 DevSwipe？
+              为什么选择 CodeCrush？
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
               我们为开发者打造了一个现代化、高性能的项目展示平台
@@ -325,14 +325,14 @@ const Landing: React.FC = () => {
               viewport={{ once: true }}
             >
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/[0.1] rounded-xl flex items-center justify-center relative shadow-[0_8px_32px_0_rgba(59,130,246,0.3)]">
-                <span className="text-white font-bold text-sm relative z-10">DS</span>
+                <span className="text-white font-bold text-sm relative z-10">CC</span>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl animate-glass-shimmer" 
                      style={{
                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
                        backgroundSize: '200% 100%'
                      }}></div>
               </div>
-              <span className="text-white font-semibold text-xl">DevSwipe</span>
+              <span className="text-white font-semibold text-xl">CodeCrush</span>
             </motion.div>
             
             <motion.div 
@@ -365,7 +365,7 @@ const Landing: React.FC = () => {
             viewport={{ once: true }}
           >
             <p className="text-white/60">
-              © 2024 DevSwipe. 保留所有权利。
+              © 2024 CodeCrush. 保留所有权利。
             </p>
           </motion.div>
         </div>

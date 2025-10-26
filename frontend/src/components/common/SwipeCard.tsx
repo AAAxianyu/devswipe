@@ -270,7 +270,7 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
         </div>
 
         {/* 顶部按钮组 */}
-        <div className="absolute top-4 right-4 flex flex-col space-y-2">
+        <div className="absolute top-4 right-4">
           {/* 查看详情按钮 */}
           <button
             onClick={handleCardClick}
@@ -282,11 +282,6 @@ const SwipeCard: React.FC<SwipeCardProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
-
-          {/* 进度指示器 */}
-          <div className="bg-black/50 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium">
-            {index + 1} / {total}
-          </div>
         </div>
 
         {/* 滑动提示 */}
