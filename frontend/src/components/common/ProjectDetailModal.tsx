@@ -440,46 +440,82 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project, onClos
                   评论词云分析
                 </h3>
                 <div className="backdrop-blur-sm bg-white/[0.05] border border-white/[0.1] rounded-xl p-6">
-                  <div className="flex flex-wrap gap-3 justify-center items-center min-h-[200px]">
-                    {wordCloudData.map((item, index) => {
-                      const maxCount = Math.max(...wordCloudData.map(w => w.count));
-                      const minCount = Math.min(...wordCloudData.map(w => w.count));
-                      // 计算归一化的频率比例 (0-1)
-                      const scale = minCount === maxCount ? 1 : (item.count - minCount) / (maxCount - minCount);
-                      // 字体大小范围：12px - 48px，让高频词更突出
-                      const fontSize = 12 + scale * 36;
-                      // 透明度范围：0.6 - 1.0
-                      const opacity = 0.6 + scale * 0.4;
+                  {/* 简洁的词云展示 */}
+                  <div className="text-center py-8">
+                    {/* 词云图片作为装饰背景 */}
+                    <div className="relative inline-block">
+                      <motion.img
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&auto=format"
+                        alt="词云背景"
+                        className="rounded-lg opacity-30 max-w-full h-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                      />
+                    </div>
 
-                      // 随机颜色变化
-                      const colors = [
-                        'from-blue-400 to-cyan-400',
-                        'from-cyan-400 to-teal-400',
-                        'from-blue-500 to-blue-300',
-                        'from-cyan-500 to-cyan-300',
-                      ];
-                      const colorClass = colors[index % colors.length];
+                    {/* 关键词统计 */}
+                    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {wordCloudData.slice(0, 4).map((item, index) => (
+                        <motion.div
+                          key={item.word}
+                          className="backdrop-blur-sm bg-white/[0.08] border border-white/[0.15] rounded-xl p-4 text-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                        >
+                          <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-1">
+                            {item.word}
+                          </div>
+                          <div className="text-white/60 text-sm">
+                            出现 {item.count} 次
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
 
-                      return (
+                    {/* 更多关键词标签 */}
+                    <div className="mt-6 flex flex-wrap gap-2 justify-center">
+                      {wordCloudData.slice(4, 10).map((item, index) => (
                         <motion.span
                           key={item.word}
-                          className={`bg-gradient-to-r ${colorClass} bg-clip-text text-transparent font-bold cursor-default hover:scale-110 transition-transform`}
-                          style={{
-                            fontSize: `${fontSize}px`,
-                            opacity: opacity,
-                          }}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: opacity, scale: 1 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          title={`出现 ${item.count} 次`}
+                          className="backdrop-blur-sm bg-white/[0.05] border border-white/[0.1] rounded-full px-3 py-1 text-sm text-white/80 hover:bg-white/[0.1] transition-colors cursor-default"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.8 + index * 0.05 }}
                         >
                           {item.word}
+                          <span className="text-white/50 text-xs ml-1">({item.count})</span>
                         </motion.span>
-                      );
-                    })}
+                      ))}
+                    </div>
+
+                    {/* 统计信息 */}
+                    <motion.div
+                      className="mt-8 backdrop-blur-sm bg-white/[0.03] border border-white/[0.08] rounded-xl p-4"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 1.0 }}
+                    >
+                      <div className="flex items-center justify-center gap-8 text-white/70 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Cloud className="w-4 h-4 text-cyan-400" />
+                          <span>{wordCloudData.length} 个关键词</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MessageCircle className="w-4 h-4 text-green-400" />
+                          <span>基于 {mockComments.length} 条评论</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <TrendingUp className="w-4 h-4 text-blue-400" />
+                          <span>最高频词：{wordCloudData[0]?.word || 'N/A'}</span>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
-                  <p className="text-center text-white/40 text-xs mt-4">
-                    基于 {mockComments.length} 条评论的关键词分析
+
+                  <p className="text-center text-white/40 text-xs mt-6">
+                    基于评论内容提取的关键词，反映了用户对项目的关注点
                   </p>
                 </div>
               </div>
